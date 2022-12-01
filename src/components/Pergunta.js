@@ -1,35 +1,57 @@
 import setaPlay from '../assets/seta_play.png';
 import setaVirar from '../assets/seta_virar.png';
 import iconeErro from '../assets/icone_erro.png';
-// eslint-disable-next-line
 import iconeCerto from '../assets/icone_certo.png';
-// eslint-disable-next-line
 import iconeQuase from '../assets/icone_quase.png';
 import styled from 'styled-components';
+import { useState } from 'react';
 
-export default function Pergunta() {
+export default function Pergunta({ question, answer, index }) {
+    const [cardEstado, setCardEstado] = useState(0);
+    const [resposta, setResposta] = useState(undefined);
+
+    function virarCarta() {
+        setCardEstado(cardEstado + 1);
+    }
+
+    function pegarResposta(bool) {
+        setResposta(bool);
+        virarCarta();
+    }
+
+    function pegarIcone() {
+        if (resposta === undefined) {
+            return [iconeQuase, "#ff922e"];
+        }
+        if (resposta === true) {
+            return [iconeCerto, "#2fbe34"];
+        }
+        return [iconeErro, "#ff3030"];
+    }
+
     return (
         <>
-            <ContainerPerguntaFechada>
-                <p>Pergunta 1</p>
-                <img src={setaPlay} alt="setaPlay" />
-            </ContainerPerguntaFechada>
-            <ContainerPerguntaAberta>
-                <p>O que é JSX?</p>
-                <img src={setaVirar} alt="setaVirar" />
-            </ContainerPerguntaAberta>
-            <ContainerPerguntaFechada>
-                <p style={{ color: "#FF3030", textDecoration: "line-through", textDecorationThickness: "10%" }}>Pergunta 1</p>
-                <img src={iconeErro} alt="iconeErro" />
-            </ContainerPerguntaFechada>
-            <ContainerPerguntaAberta>
-                <p>JSX é uma sintaxe para escrever HTML dentro do JS</p>
+            {cardEstado === 0 && <ContainerPerguntaFechada>
+                <p>Pergunta {index + 1}</p>
+                <img src={setaPlay} alt="setaPlay" onClick={virarCarta}/>
+            </ContainerPerguntaFechada>}
+            {cardEstado === 1 && <ContainerPerguntaAberta>
+                <p>{question}</p>
+                <img src={setaVirar} alt="setaVirar" onClick={virarCarta} />
+            </ContainerPerguntaAberta>}
+            {cardEstado === 2 && <ContainerPerguntaAberta>
+                <p>{answer}</p>
                 <ContainerBotoes>
-                    <button>Não<br />lembrei</button>
-                    <button>Quase não lembrei</button>
-                    <button>Zap!</button>
+                    <button onClick={()=> pegarResposta(false)}>Não<br />lembrei</button>
+                    <button onClick={()=> pegarResposta()}>Quase não lembrei</button>
+                    <button onClick={()=> pegarResposta(true)}>Zap!</button>
                 </ContainerBotoes>
-            </ContainerPerguntaAberta>
+            </ContainerPerguntaAberta>}
+            {cardEstado === 3 && <ContainerPerguntaFechada>
+                <p style={{ color: pegarIcone()[1], textDecoration: "line-through", textDecorationThickness: "10%" }}>Pergunta {index + 1}</p>
+                <img src={pegarIcone()[0]} alt="icone" />
+            </ContainerPerguntaFechada>}
+            
         </>
     )
 }

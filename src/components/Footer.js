@@ -1,6 +1,10 @@
+// eslint-disable-next-line
 import iconeErro from '../assets/icone_erro.png';
+// eslint-disable-next-line
 import iconeCerto from '../assets/icone_certo.png';
+// eslint-disable-next-line
 import iconeQuase from '../assets/icone_quase.png';
+// eslint-disable-next-line
 import party from '../assets/party.png';
 // eslint-disable-next-line
 import sad from '../assets/sad.png';
@@ -9,21 +13,21 @@ import styled from 'styled-components';
 export default function Footer() {
     return (
         <FooterContainer>
-            <div style={{ display: "flex", gap: "12px" }}>
+            {/* <div style={{ display: "flex", gap: "12px" }}>
                 <img src={party} alt="party" />
                 <p>Parabéns</p>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            </div> */}
+            {/* <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <p>Você não esqueceu de</p>
                 <p>nenhum flashcard!</p>
-            </div>
+            </div> */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <p>4/4 CONCLUÍDOS</p>
-                <div style={{ display: "flex", gap: "5px" }}>
+                {/* <div style={{ display: "flex", gap: "5px" }}>
                     <img src={iconeErro} alt="iconeErro" />
                     <img src={iconeQuase} alt="iconeQuase" />
                     <img src={iconeCerto} alt="iconeCerto" />
-                </div>
+                </div> */}
             </div>
         </FooterContainer>
     )
@@ -45,7 +49,7 @@ export const FooterContainer = styled.div`
     justify-content: center;
     min-height: 50px;
     padding: 10px;
-    position: fixed;
+    position: sticky;
     width: 100%;
     > .container-botoes {
         display: flex;
