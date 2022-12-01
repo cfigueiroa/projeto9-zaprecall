@@ -34,11 +34,11 @@ export default function Pergunta({ question, answer, index, finalizadas, setFina
         <>
             {cardEstado === 0 && <ContainerPerguntaFechada data-test="flashcard">
                 <p data-test="flashcard-text">Pergunta {index + 1}</p>
-                <img data-test="play-btn" src={setaPlay} alt="setaPlay" onClick={virarCarta}/>
+                <ClickableImg data-test="play-btn" src={setaPlay} alt="setaPlay" onClick={virarCarta}/>
             </ContainerPerguntaFechada>}
             {cardEstado === 1 && <ContainerPerguntaAberta data-test="flashcard">
                 <p data-test="flashcard-text">{question}</p>
-                <img data-test="turn-btn" src={setaVirar} alt="setaVirar" onClick={virarCarta} />
+                <ClickableImg data-test="turn-btn" src={setaVirar} alt="setaVirar" onClick={virarCarta} />
             </ContainerPerguntaAberta>}
             {cardEstado === 2 && <ContainerPerguntaAberta data-test="flashcard">
                 <p data-test="flashcard-text">{answer}</p>
@@ -56,6 +56,13 @@ export default function Pergunta({ question, answer, index, finalizadas, setFina
         </>
     )
 }
+
+export const ClickableImg = styled.img`
+    &:hover{
+    cursor: pointer;
+    filter: brightness(200%) saturate(200%);
+    }
+`
 
 export const ContainerPerguntaFechada = styled.div`
     width: 300px;
@@ -127,7 +134,7 @@ export const ContainerBotoes = styled.div`
         padding: 5px;
         text-align: center;
         width: 90px;
-        &:hover:enabled{
+        &:hover{
         filter: brightness(110%) saturate(110%);
         cursor: pointer;
      }
