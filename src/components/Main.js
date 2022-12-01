@@ -2,13 +2,15 @@ import Footer from './Footer';
 import Logo from './Logo';
 import Perguntas from './Perguntas';
 import styled from 'styled-components';
+import { useState } from 'react';
 
 export default function Main() {
+    const [finalizadas, setFinalizadas] = useState(0);
     return (
         <MainContainer>
             <Logo />
-            <Perguntas />
-            <Footer />
+            <Perguntas finalizadas={finalizadas} setFinalizadas={setFinalizadas}/>
+            <Footer finalizadas={finalizadas}/>
         </MainContainer>
     )
 }

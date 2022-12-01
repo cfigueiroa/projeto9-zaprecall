@@ -1,12 +1,14 @@
 import setaPlay from '../assets/seta_play.png';
 import setaVirar from '../assets/seta_virar.png';
 import iconeErro from '../assets/icone_erro.png';
+// eslint-disable-next-line
 import iconeCerto from '../assets/icone_certo.png';
+// eslint-disable-next-line
 import iconeQuase from '../assets/icone_quase.png';
 import styled from 'styled-components';
 import { useState } from 'react';
 
-export default function Pergunta({ question, answer, index }) {
+export default function Pergunta({ question, answer, index, finalizadas, setFinalizadas }) {
     const [cardEstado, setCardEstado] = useState(0);
     const [resposta, setResposta] = useState(undefined);
 
@@ -16,6 +18,7 @@ export default function Pergunta({ question, answer, index }) {
 
     function pegarResposta(bool) {
         setResposta(bool);
+        setFinalizadas(finalizadas + 1);
         virarCarta();
     }
 

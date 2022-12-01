@@ -9,8 +9,10 @@ import party from '../assets/party.png';
 // eslint-disable-next-line
 import sad from '../assets/sad.png';
 import styled from 'styled-components';
+import cards from '../cards';
 
-export default function Footer() {
+export default function Footer({finalizadas}) {
+    const qntdPerguntas = cards.length;
     return (
         <FooterContainer>
             {/* <div style={{ display: "flex", gap: "12px" }}>
@@ -22,7 +24,7 @@ export default function Footer() {
                 <p>nenhum flashcard!</p>
             </div> */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <p>4/4 CONCLUÍDOS</p>
+                <p>{finalizadas}/{qntdPerguntas} CONCLUÍDOS</p>
                 {/* <div style={{ display: "flex", gap: "5px" }}>
                     <img src={iconeErro} alt="iconeErro" />
                     <img src={iconeQuase} alt="iconeQuase" />
