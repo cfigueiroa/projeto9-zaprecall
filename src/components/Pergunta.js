@@ -1,9 +1,7 @@
 import setaPlay from '../assets/seta_play.png';
 import setaVirar from '../assets/seta_virar.png';
 import iconeErro from '../assets/icone_erro.png';
-// eslint-disable-next-line
 import iconeCerto from '../assets/icone_certo.png';
-// eslint-disable-next-line
 import iconeQuase from '../assets/icone_quase.png';
 import styled from 'styled-components';
 import { useState } from 'react';
@@ -24,35 +22,35 @@ export default function Pergunta({ question, answer, index, finalizadas, setFina
 
     function pegarIcone() {
         if (resposta === undefined) {
-            return [iconeQuase, "#ff922e"];
+            return [iconeQuase, "#ff922e", "partial-icon"];
         }
         if (resposta === true) {
-            return [iconeCerto, "#2fbe34"];
+            return [iconeCerto, "#2fbe34", "zap-icon"];
         }
-        return [iconeErro, "#ff3030"];
+        return [iconeErro, "#ff3030", "no-icon"];
     }
 
     return (
         <>
-            {cardEstado === 0 && <ContainerPerguntaFechada>
-                <p>Pergunta {index + 1}</p>
-                <img src={setaPlay} alt="setaPlay" onClick={virarCarta}/>
+            {cardEstado === 0 && <ContainerPerguntaFechada data-test="flashcard">
+                <p data-test="flashcard-text">Pergunta {index + 1}</p>
+                <img data-test="play-btn" src={setaPlay} alt="setaPlay" onClick={virarCarta}/>
             </ContainerPerguntaFechada>}
-            {cardEstado === 1 && <ContainerPerguntaAberta>
-                <p>{question}</p>
-                <img src={setaVirar} alt="setaVirar" onClick={virarCarta} />
+            {cardEstado === 1 && <ContainerPerguntaAberta data-test="flashcard">
+                <p data-test="flashcard-text">{question}</p>
+                <img data-test="turn-btn" src={setaVirar} alt="setaVirar" onClick={virarCarta} />
             </ContainerPerguntaAberta>}
-            {cardEstado === 2 && <ContainerPerguntaAberta>
-                <p>{answer}</p>
+            {cardEstado === 2 && <ContainerPerguntaAberta data-test="flashcard">
+                <p data-test="flashcard-text">{answer}</p>
                 <ContainerBotoes>
-                    <button onClick={()=> pegarResposta(false)}>Não<br />lembrei</button>
-                    <button onClick={()=> pegarResposta()}>Quase não lembrei</button>
-                    <button onClick={()=> pegarResposta(true)}>Zap!</button>
+                    <button data-test="no-btn" onClick={()=> pegarResposta(false)}>Não<br />lembrei</button>
+                    <button data-test="partial-btn" onClick={()=> pegarResposta()}>Quase não lembrei</button>
+                    <button data-test="zap-btn" onClick={()=> pegarResposta(true)}>Zap!</button>
                 </ContainerBotoes>
             </ContainerPerguntaAberta>}
-            {cardEstado === 3 && <ContainerPerguntaFechada>
-                <p style={{ color: pegarIcone()[1], textDecoration: "line-through", textDecorationThickness: "10%" }}>Pergunta {index + 1}</p>
-                <img src={pegarIcone()[0]} alt="icone" />
+            {cardEstado === 3 && <ContainerPerguntaFechada data-test="flashcard">
+                <p data-test="flashcard-text" style={{ color: pegarIcone()[1], textDecoration: "line-through", textDecorationThickness: "10%" }}>Pergunta {index + 1}</p>
+                <img data-test={pegarIcone()[2]} src={pegarIcone()[0]} alt="icone" />
             </ContainerPerguntaFechada>}
             
         </>

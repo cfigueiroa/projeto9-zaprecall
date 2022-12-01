@@ -14,7 +14,7 @@ import cards from '../cards';
 export default function Footer({finalizadas}) {
     const qntdPerguntas = cards.length;
     return (
-        <FooterContainer>
+        <FooterContainer data-test="footer">
             {/* <div style={{ display: "flex", gap: "12px" }}>
                 <img src={party} alt="party" />
                 <p>Parabéns</p>
