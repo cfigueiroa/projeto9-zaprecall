@@ -69,7 +69,7 @@ export const ContainerPerguntaFechada = styled.div`
     align-items: center;
     justify-content: space-between;
     > p {
-        font-family: "Recursive";
+        font-family: 'Recursive', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 16px;
@@ -86,7 +86,7 @@ export const ContainerPerguntaAberta = styled.div`
     background: #ffffd5;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
-    font-family: "Recursive";
+    font-family: 'Recursive', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -118,7 +118,7 @@ export const ContainerBotoes = styled.div`
         /*  */
         color: #ffffff;
         display: flex;
-        font-family: "Recursive";
+        font-family: 'Recursive', sans-serif;
         font-size: 12px;
         font-style: normal;
         font-weight: 400;
@@ -127,6 +127,10 @@ export const ContainerBotoes = styled.div`
         padding: 5px;
         text-align: center;
         width: 90px;
+        &:hover:enabled{
+        filter: brightness(110%) saturate(110%);
+        cursor: pointer;
+     }
     }
     /*  */
     > button:nth-child(1) {

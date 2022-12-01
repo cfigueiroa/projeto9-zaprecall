@@ -42,7 +42,7 @@ export const FooterContainer = styled.div`
     color: #333333;
     display: flex;
     flex-direction: column;
-    font-family: "Recursive";
+    font-family: 'Recursive', sans-serif;
     font-size: 18px;
     font-weight: 400;
     /*  */
