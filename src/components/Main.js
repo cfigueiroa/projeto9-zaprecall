@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 export default function Main() {
-    const [finalizadas, setFinalizadas] = useState(0);
+    const [finalizadas, setFinalizadas] = useState([]);
     return (
         <MainContainer>
             <Logo />

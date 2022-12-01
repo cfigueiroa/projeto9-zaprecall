@@ -16,7 +16,7 @@ export default function Pergunta({ question, answer, index, finalizadas, setFina
 
     function pegarResposta(bool) {
         setResposta(bool);
-        setFinalizadas(finalizadas + 1);
+        setFinalizadas([...finalizadas, bool]);
         virarCarta();
     }
 
