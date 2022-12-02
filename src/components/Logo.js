@@ -7,7 +7,7 @@ export default function Logo() {
             <img src={logo} alt="logo" />
             <h1>ZapRecall</h1>
         </LogoContainer>
-    )
+    );
 }
 
 export const LogoContainer = styled.div`
@@ -25,5 +25,5 @@ export const LogoContainer = styled.div`
         font-weight: 400;
         line-height: 45px;
         margin-left: 20px;
-}
+    }
 `;

@@ -1,14 +1,14 @@
 import logo from '../assets/logo.png';
 import styled from 'styled-components';
 
-export default function Home({setShow}) {
+export default function Home({ setShow }) {
     return (
         <HomeContainer>
             <img src={logo} alt="logo" />
             <h1>ZapRecall</h1>
-            <button data-test="start-btn" onClick={()=> setShow(true)}>Iniciar Recall!</button>
+            <button data-test="start-btn" onClick={() => setShow(true)}>Iniciar Recall!</button>
         </HomeContainer>
-    )
+    );
 }
 
 const HomeContainer = styled.div`
@@ -55,6 +55,6 @@ const HomeContainer = styled.div`
         &:hover:enabled{
         filter: brightness(110%) saturate(110%);
         cursor: pointer;
-     }
+        }
     }
-`
+`;

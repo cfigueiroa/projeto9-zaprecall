@@ -21,7 +21,7 @@ export default function Footer({ finalizadas }) {
                         <p>Mas não desanime!</p>
                     </div>
                 </>
-            )
+            );
         }
         return (
             <>
@@ -34,8 +34,7 @@ export default function Footer({ finalizadas }) {
                     <p>nenhum flashcard!</p>
                 </div>
             </>
-        )
-
+        );
     }
 
     const qntdPerguntas = cards.length;
@@ -52,17 +51,23 @@ export default function Footer({ finalizadas }) {
                 <div style={{ display: "flex", gap: "5px" }}>
                     {finalizadas.map((item, index) => {
                         if (item === true) {
-                            return <img data-test="zap-icon" key={index} src={iconeCerto} alt="iconeCerto" />
+                            return (
+                                <img data-test="zap-icon" key={index} src={iconeCerto} alt="iconeCerto" />
+                            );
                         }
                         if (item === false) {
-                            return <img data-test="no-icon" key={index} src={iconeErro} alt="iconeErro" />
+                            return (
+                                <img data-test="no-icon" key={index} src={iconeErro} alt="iconeErro" />
+                            );
                         }
-                        return <img data-test="partial-icon" key={index} src={iconeQuase} alt="iconeQuase" />
+                        return (
+                            <img data-test="partial-icon" key={index} src={iconeQuase} alt="iconeQuase" />
+                        );
                     })}
                 </div>
             </div>
         </FooterContainer>
-    )
+    );
 }
 
 export const FooterContainer = styled.div`
@@ -109,4 +114,4 @@ export const ContainerFinished = styled.div`
     padding: 10px;
     position: sticky;
     width: 100%;
-`
+`;

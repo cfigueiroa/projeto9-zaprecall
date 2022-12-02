@@ -1,18 +1,18 @@
+import { useState } from 'react';
 import Footer from './Footer';
 import Logo from './Logo';
 import Perguntas from './Perguntas';
 import styled from 'styled-components';
-import { useState } from 'react';
 
 export default function Main() {
     const [finalizadas, setFinalizadas] = useState([]);
     return (
         <MainContainer>
             <Logo />
-            <Perguntas finalizadas={finalizadas} setFinalizadas={setFinalizadas}/>
-            <Footer finalizadas={finalizadas}/>
+            <Perguntas finalizadas={finalizadas} setFinalizadas={setFinalizadas} />
+            <Footer finalizadas={finalizadas} />
         </MainContainer>
-    )
+    );
 }
 
 export const MainContainer = styled.div`

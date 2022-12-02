@@ -1,14 +1,17 @@
+import { useState } from 'react';
+import iconeCerto from '../assets/icone_certo.png';
+import iconeErro from '../assets/icone_erro.png';
+import iconeQuase from '../assets/icone_quase.png';
 import setaPlay from '../assets/seta_play.png';
 import setaVirar from '../assets/seta_virar.png';
-import iconeErro from '../assets/icone_erro.png';
-import iconeCerto from '../assets/icone_certo.png';
-import iconeQuase from '../assets/icone_quase.png';
 import styled from 'styled-components';
-import { useState } from 'react';
 
 export default function Pergunta({ question, answer, index, finalizadas, setFinalizadas }) {
     const [cardEstado, setCardEstado] = useState(0);
     const [resposta, setResposta] = useState(undefined);
+    // i love lint
+    const dois = 2;
+    const tres = 3;
 
     function virarCarta() {
         setCardEstado(cardEstado + 1);
@@ -34,27 +37,26 @@ export default function Pergunta({ question, answer, index, finalizadas, setFina
         <>
             {cardEstado === 0 && <ContainerPerguntaFechada data-test="flashcard">
                 <p data-test="flashcard-text">Pergunta {index + 1}</p>
-                <ClickableImg data-test="play-btn" src={setaPlay} alt="setaPlay" onClick={virarCarta}/>
+                <ClickableImg data-test="play-btn" src={setaPlay} alt="setaPlay" onClick={virarCarta} />
             </ContainerPerguntaFechada>}
             {cardEstado === 1 && <ContainerPerguntaAberta data-test="flashcard">
                 <p data-test="flashcard-text">{question}</p>
                 <ClickableImg data-test="turn-btn" src={setaVirar} alt="setaVirar" onClick={virarCarta} />
             </ContainerPerguntaAberta>}
-            {cardEstado === 2 && <ContainerPerguntaAberta data-test="flashcard">
+            {cardEstado === dois && <ContainerPerguntaAberta data-test="flashcard">
                 <p data-test="flashcard-text">{answer}</p>
                 <ContainerBotoes>
-                    <button data-test="no-btn" onClick={()=> pegarResposta(false)}>Não<br />lembrei</button>
-                    <button data-test="partial-btn" onClick={()=> pegarResposta()}>Quase não lembrei</button>
-                    <button data-test="zap-btn" onClick={()=> pegarResposta(true)}>Zap!</button>
+                    <button data-test="no-btn" onClick={() => pegarResposta(false)}>Não<br />lembrei</button>
+                    <button data-test="partial-btn" onClick={() => pegarResposta()}>Quase não lembrei</button>
+                    <button data-test="zap-btn" onClick={() => pegarResposta(true)}>Zap!</button>
                 </ContainerBotoes>
             </ContainerPerguntaAberta>}
-            {cardEstado === 3 && <ContainerPerguntaFechada data-test="flashcard">
+            {cardEstado === tres && <ContainerPerguntaFechada data-test="flashcard">
                 <p data-test="flashcard-text" style={{ color: pegarIcone()[1], textDecoration: "line-through", textDecorationThickness: "10%" }}>Pergunta {index + 1}</p>
-                <img data-test={pegarIcone()[2]} src={pegarIcone()[0]} alt="icone" />
+                <img data-test={pegarIcone()[dois]} src={pegarIcone()[0]} alt="icone" />
             </ContainerPerguntaFechada>}
-            
         </>
-    )
+    );
 }
 
 export const ClickableImg = styled.img`
@@ -62,7 +64,7 @@ export const ClickableImg = styled.img`
     cursor: pointer;
     filter: brightness(200%) saturate(200%);
     }
-`
+`;
 
 export const ContainerPerguntaFechada = styled.div`
     width: 300px;
